@@ -1,4 +1,4 @@
-const baseConfig = require('./client.base')
+const baseConfig = require('./webpack.client.base')
 const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const analyzerPort = require('../index').analyzerPort

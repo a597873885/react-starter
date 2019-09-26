@@ -11,7 +11,7 @@ import './style.scss'
 
 @connect(
   (state, props) => ({
-    userinfo: getUserInfo(state)
+    userInfo: getUserInfo(state)
   }),
   dispatch => ({
     signOut: bindActionCreators(signOut, dispatch)
@@ -19,7 +19,7 @@ import './style.scss'
 )
 export default class Head extends React.Component {
   static propTypes = {
-    userinfo: PropTypes.object.isRequired,
+    userInfo: PropTypes.object.isRequired,
     signOut: PropTypes.func.isRequired
   }
 
@@ -39,7 +39,7 @@ export default class Head extends React.Component {
   }
 
   render() {
-    const { userinfo } = this.props
+    const { userInfo } = this.props
 
     return (
       <header>
@@ -77,7 +77,7 @@ export default class Head extends React.Component {
             <span className="mt-2 mt-md-0">
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                  <span className="nav-link">{userinfo.nickname}</span>
+                  <span className="nav-link">{userInfo.nickname}</span>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="javascript:void(0)" onClick={this.signOut}>

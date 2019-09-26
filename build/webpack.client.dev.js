@@ -1,4 +1,4 @@
-const baseConfig = require('./client.base')
+const baseConfig = require('./webpack.client.base')
 const webpack = require('webpack')
 const WriteFileWebpackPlugin = require('write-file-webpack-plugin')
 // const ManifestPlugin = require('webpack-manifest-plugin');

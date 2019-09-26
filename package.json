@@ -3,10 +3,10 @@
   "version": "2.0.0",
   "description": "React 同构脚手架",
   "scripts": {
-    "start": "NODE_ENV=development node ./scripts/start.js",
-    "dev": "NODE_ENV=development webpack --config config/webpack/server.dev.js && NODE_ENV=development webpack --config config/webpack/client.dev.js && node ./dist/server/server.js",
-    "pro": "NODE_ENV=production webpack --config config/webpack/server.pro.js && NODE_ENV=production webpack --config config/webpack/client.pro.js && node ./dist/server/server.js",
-    "dist": "NODE_ENV=production webpack --config config/webpack/server.pro.js && NODE_ENV=production webpack --config config/webpack/client.pro.js",
+    "start": "NODE_ENV=development node ./build/start.js",
+    "dev": "NODE_ENV=development webpack --config build/webpack.server.dev.js && NODE_ENV=development webpack --config build/webpack.client.dev.js && node ./dist/server/server.js",
+    "pro": "NODE_ENV=production webpack --config build/webpack.server.pub.js && NODE_ENV=production webpack --config build/webpack.client.pub.js && node ./dist/server/server.js",
+    "dist": "NODE_ENV=production webpack --config build/webpack.server.pub.js && NODE_ENV=production webpack --config build/webpack.client.pub.js",
     "analyzer": "npm run dist",
     "server": "node ./dist/server/server.js"
   },

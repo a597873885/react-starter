@@ -4,7 +4,7 @@ const path = require('path')
 const nodeExternals = require('webpack-node-externals')
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const config = require('../index')
+const config = require('./config')
 
 module.exports = {
   name: 'server',
@@ -26,7 +26,7 @@ module.exports = {
   ],
 
   output: {
-    path: path.resolve(__dirname, '../../dist/server'),
+    path: path.resolve(__dirname, '../dist/server'),
     filename: 'server.js',
     publicPath: config.public_path + '/'
   },
@@ -34,7 +34,7 @@ module.exports = {
   resolve: {
     alias: {
       '@': path.resolve('src'),
-      Config: path.resolve('config/index')
+      Config: path.resolve('./config')
     }
   },
 

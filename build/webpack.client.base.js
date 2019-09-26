@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const OfflinePlugin = require('offline-plugin');
 
-const config = require('../index')
+const config = require('./config')
 const devMode = process.env.NODE_ENV === 'development'
 
 /**
@@ -34,7 +34,7 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, '../../dist/client'),
+    path: path.resolve(__dirname, '../dist/client'),
     filename: devMode ? '[name].bundle.js' : '[name].[hash].js',
     publicPath: config.public_path + '/'
   },
@@ -42,7 +42,7 @@ module.exports = {
   resolve: {
     alias: {
       '@': path.resolve('src'),
-      Config: path.resolve('config/index')
+      Config: path.resolve('./config')
     }
   },
 
@@ -157,7 +157,7 @@ module.exports = {
     // 创建视图模版文件，给server使用
     // 主要是打包后的添加的css、js静态文件路径添加到模版中
     new HtmlwebpackPlugin({
-      filename: path.resolve(__dirname, '../../dist/server/index.ejs'),
+      filename: path.resolve(__dirname, '../dist/server/index.ejs'),
       template: 'src/views/index.html',
       metaDom: '<%- meta %>',
       htmlDom: '<%- html %>',

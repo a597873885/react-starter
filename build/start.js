@@ -5,10 +5,10 @@ const rimraf = require('rimraf')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 
-const clientConfig = require('../config/webpack/client.dev')
-const serverConfig = require('../config/webpack/server.dev')
+const clientConfig = require('./webpack.client.dev')
+const serverConfig = require('./webpack.server.dev')
 
-const config = require('../config')
+const config = require('./config')
 
 const compilerPromise = compiler => {
   return new Promise((resolve, reject) => {
@@ -25,8 +25,10 @@ const app = express()
 const WEBPACK_PORT = config.port + 1
 
 const start = async () => {
-  rimraf.sync('./dist')
-
+  console.log("=================开始删除dist目录")
+  // return
+  rimraf.sync('../dist')
+  console.log("=================成功删除dist目录")
   clientConfig.entry.app.unshift(`webpack-hot-middleware/client?path=http://localhost:${WEBPACK_PORT}/__webpack_hmr`)
 
   clientConfig.output.hotUpdateMainFilename = `[hash].hot-update.json`

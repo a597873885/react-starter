@@ -1,4 +1,4 @@
-const baseConfig = require('./server.base')
+const baseConfig = require('./webpack.server.base')
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 

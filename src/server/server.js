@@ -42,11 +42,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(compress())
-// app.use(express.static('./dist'));
 app.use(express.static('./dist/client'))
-// app.use(express.static('./'));
-
-// console.log(express.static(__dirname + '/dist'));
 
 app.use(function(req, res, next) {
   // 计算页面加载完成花费的时间
@@ -150,4 +146,6 @@ app.get('*', async (req, res) => {
 })
 
 app.listen(port)
+console.log("==============================")
 console.log('server started on port ' + port)
+console.log("==============================")
