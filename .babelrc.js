@@ -1,4 +1,4 @@
-var config = require('./build/config');
+var config = require('./config');
 
 module.exports = function(api) {
 

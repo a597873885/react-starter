@@ -2,12 +2,13 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import parseUrl from '@/common/parse-url'
+import parseUrl from 'Root/common/parse-url'
 
 // 壳组件，用于给页面组件，套一个外壳
 // 这样可以通过壳组件，给每个页面，传递参数
 
 const Shell = Component => {
+  console.log("1")
   if (!Component.loadData) {
     Component.loadData = ({ store, match }) => {
       return new Promise(async function(resolve, reject) {
@@ -25,11 +26,6 @@ const Shell = Component => {
       super(props)
       const { search } = props.location
       this.props.location.params = search ? parseUrl(search) : null
-    }
-
-    // 组件加载完成
-    componentWillMount() {
-      // console.log('进入组件')
     }
 
     // 组件加载完成

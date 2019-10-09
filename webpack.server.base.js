@@ -26,15 +26,15 @@ module.exports = {
   ],
 
   output: {
-    path: path.resolve(__dirname, '../dist/server'),
+    path: path.resolve(__dirname, './dist/server'),
     filename: 'server.js',
     publicPath: config.public_path + '/'
   },
 
   resolve: {
     alias: {
-      '@': path.resolve('src'),
-      Config: path.resolve('config.js')
+      'Root': path.resolve('src'),
+      Config: path.resolve('config')
     }
   },
 

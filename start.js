@@ -25,7 +25,7 @@ const app = express()
 const WEBPACK_PORT = config.port + 1
 
 const start = async () => {
-  rimraf.sync('../dist')
+  rimraf.sync('./dist')
   console.log("=================成功删除dist目录")
   clientConfig.entry.app.unshift(`webpack-hot-middleware/client?path=http://localhost:${WEBPACK_PORT}/__webpack_hmr`)
 
@@ -57,7 +57,7 @@ const start = async () => {
   // 客户端热更新
   app.use(webpackHotMiddleware(_clientCompiler))
 
-  app.use(express.static('../dist/client'))
+  app.use(express.static('./dist/client'))
 
   app.listen(WEBPACK_PORT)
 

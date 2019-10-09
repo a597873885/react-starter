@@ -13,12 +13,12 @@ import { MetaTagsContext } from 'react-meta-tags'
 import Loadable from 'react-loadable'
 
 // 路由配置
-import configureStore from '@/store'
+import configureStore from 'Root/store'
 // 路由组件
-import createRouter from '@/router'
+import createRouter from 'Root/router'
 // 路由初始化的redux内容
-import { initialStateJSON } from '@/store/reducers'
-import { saveAccessToken, saveUserInfo } from '@/store/actions/user'
+import { initialStateJSON } from 'Root/store/reducers'
+import { saveAccessToken, saveUserInfo } from 'Root/store/actions/user'
 
 // 配置
 import { port, auth_cookie_name } from 'Config'
@@ -82,10 +82,13 @@ app.get('*', async (req, res) => {
   let _route = null,
     _match = null
 
-  router.list.some(route => {
+  await router.list.some(route => {
     let match = matchPath(req.url.split('?')[0], route)
     if (match && match.path) {
+      console.log("--------------")
+      console.log(route)
       _route = route
+      
       _match = match
       return true
     }
@@ -95,16 +98,13 @@ app.get('*', async (req, res) => {
     code: 200
     // url
   }
-
-  // console.log(_route.component);
-  // console.log(_route.component.loadData);
-
-  if (_route.loadData) {
+  console.log("=====================2")
+  if (_route && _route.loadData) {
     context = await _route.loadData({ store, match: _match })
     // console.log(context);
   }
 
-  await _route.component.preload()
+  await _route && _route.component.preload()
 
   // await Loadable.preloadAll();
 
@@ -147,5 +147,5 @@ app.get('*', async (req, res) => {
 
 app.listen(port)
 console.log("==============================")
-console.log('server started on port ' + port)
+console.log('服务启动成功！请访问：http://localhost:' + port)
 console.log("==============================")

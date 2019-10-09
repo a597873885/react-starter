@@ -30,6 +30,13 @@ let config = {
       <meta name="renderer" content="webkit|ie-comp|ie-stand">
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+      <link rel="stylesheet" href="assets/fonts/feather/feather.min.css">
+      <link rel="stylesheet" href="assets/libs/highlight.js/styles/vs2015.css">
+      <link rel="stylesheet" href="assets/libs/quill/dist/quill.core.css">
+      <link rel="stylesheet" href="assets/libs/select2/dist/css/select2.min.css">
+      <link rel="stylesheet" href="assets/libs/flatpickr/dist/flatpickr.min.css">
+      <link rel="stylesheet" href="assets/css/theme.min.css" id="stylesheetLight">
+      <link rel="stylesheet" href="assets/css/theme-dark.min.css" id="stylesheetDark">
     `,
   
     // 添加分析统计脚本

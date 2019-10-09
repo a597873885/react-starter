@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Shell from '@/components/shell'
-import Meta from '@/components/meta'
+import Shell from 'Root/components/shell'
+import Meta from 'Root/components/meta'
 
 export class NotFound extends React.Component {
   static loadData({ store, match }) {

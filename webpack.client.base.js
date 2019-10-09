@@ -34,15 +34,15 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, '../dist/client'),
+    path: path.resolve(__dirname, './dist/client'),
     filename: devMode ? '[name].bundle.js' : '[name].[hash].js',
     publicPath: config.public_path + '/'
   },
 
   resolve: {
     alias: {
-      '@': path.resolve('src'),
-      Config: path.resolve('./config')
+      'Root': path.resolve('src'),
+      Config: path.resolve('config')
     }
   },
 
@@ -149,15 +149,15 @@ module.exports = {
 
     new OfflinePlugin({
       autoUpdate: 1000 * 60 * 5,
-      ServiceWorker: {
-        publicPath: '/sw.js'
-      }
+      // ServiceWorker: {
+      //   publicPath: '/sw.js'
+      // }
     }),
 
     // 创建视图模版文件，给server使用
     // 主要是打包后的添加的css、js静态文件路径添加到模版中
     new HtmlwebpackPlugin({
-      filename: path.resolve(__dirname, '../dist/server/index.ejs'),
+      filename: path.resolve(__dirname, './dist/server/index.ejs'),
       template: 'src/views/index.html',
       metaDom: '<%- meta %>',
       htmlDom: '<%- html %>',

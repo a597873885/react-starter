@@ -1,14 +1,14 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
-
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 // 壳组件
-import Shell from '@/components/shell'
-import Meta from '@/components/meta'
-import PostsList from '@/components/posts/list'
+import Shell from 'Root/components/shell'
+import Meta from 'Root/components/meta'
+import PostsList from 'Root/components/posts/list'
 
-@Shell
-@withRouter
-export default class Home extends React.Component {
+
+class Home extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -30,3 +30,22 @@ export default class Home extends React.Component {
     )
   }
 }
+
+
+const mapStateToProps = (state, props) => {
+  return {}
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+  }
+}
+
+Home = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Home)
+)
+
+export default Shell(Home)

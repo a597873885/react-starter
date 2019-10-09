@@ -4,7 +4,7 @@
     "experimentalDecorators": true,
     "paths": {
       "@/*": ["src/*"],
-      "Config": ["./build/config"]
+      "Config": ["./config"]
     }
   },
   "exclude": ["node_modules", "dist"],

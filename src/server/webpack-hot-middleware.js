@@ -3,7 +3,7 @@ export default (app) => {
 
   // https://github.com/glenjamin/webpack-hot-middleware/blob/master/example/server.js
   const webpack = require('webpack');
-  const clientConfig = require('../../build/webpack.client.dev');
+  const clientConfig = require('../../webpack.client.dev');
   // const serverConfig = require('../../config/webpack/server.dev');
 
   // clientConfig.output.hotUpdateMainFilename = '../../dist/client/[hash].hot-update.json';

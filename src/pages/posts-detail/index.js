@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { loadPostsList } from '@/store/actions/posts'
-import { getPostsListByListId } from '@/store/reducers/posts'
+import { loadPostsList } from 'Root/store/actions/posts'
+import { getPostsListByListId } from 'Root/store/reducers/posts'
 
-import Shell from '@/components/shell'
-import Meta from '@/components/meta'
-import Loading from '@/components/ui/loading'
+import Shell from 'Root/components/shell'
+import Meta from 'Root/components/meta'
+import Loading from 'Root/components/ui/loading'
 
 @Shell
 @connect(
@@ -26,15 +26,13 @@ export default class PostsDetail extends React.Component {
     }
   }
 
-  componentWillMount() {
+  async componentDidMount() {
     // 服务端渲染，404内容显示处理
-    const { list, notFoundPgae } = this.props
-    if (list && list.data && !list.data[0]) {
+    const { list2, notFoundPgae } = this.props
+    if (list2 && list2.data && !list2.data[0]) {
       this.state.notFoundPgae = true
     }
-  }
 
-  async componentDidMount() {
     const { id } = this.props.match.params
     const { list, loadPostsList } = this.props
 
@@ -45,8 +43,6 @@ export default class PostsDetail extends React.Component {
           _id: id
         }
       })
-
-      // this.componentWillMount();
     }
   }
 

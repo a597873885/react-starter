@@ -8,8 +8,8 @@ import Loadable from 'react-loadable'
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 OfflinePluginRuntime.install();
 
-import configureStore from '@/store'
-import createRouter from '@/router'
+import configureStore from 'Root/store'
+import createRouter from 'Root/router'
 
 // 引入 bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -30,14 +30,14 @@ import '../pages/global.scss'
 // 从页面中获取服务端生产redux数据，作为客户端redux初始值
 const store = configureStore(window.__initState__)
 
-import { getUserInfo } from '@/store/reducers/user'
+import { getUserInfo } from 'Root/store/reducers/user'
 
-let userinfo = getUserInfo(store.getState())
+let userInfo = getUserInfo(store.getState())
 
-if (!userinfo || !userinfo.id) userinfo = null
+if (!userInfo || !userInfo.id) userInfo = null
 
 const run = async () => {
-  const router = createRouter(userinfo)
+  const router = createRouter(userInfo)
   const RouterDom = router.dom
 
   let _route = null
@@ -52,7 +52,7 @@ const run = async () => {
 
   // 预先加载首屏的js（否则会出现，loading 一闪的情况）
   // if (_route && _route.component && _route.component.preload && _route.loadData) {
-  await _route.component.preload()
+  await _route && _route.component.preload()
   // }
 
   ReactDOM.hydrate(
