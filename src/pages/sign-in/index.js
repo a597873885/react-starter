@@ -32,7 +32,7 @@ export class SignIn extends React.Component {
     let [err, success] = await signIn({ nickname: nickname.value })
 
     if (success) {
-      window.location.href = '/home'
+      window.location.href = '/'
     }
 
     return false
@@ -40,65 +40,17 @@ export class SignIn extends React.Component {
 
   render() {
     return (
-      <div styleName="container" className="container-fluid">
-      <div className="row align-items-center justify-content-center">
-        <div className="col-12 col-md-5 col-lg-6 col-xl-4 px-lg-6 my-5">
-              
-          
-          <h1 className="display-4 text-center mb-3">
+      <div styleName="container" className="text-center">
+        <Meta title="React同构脚手架" />
+        <form className="form-signin" onSubmit={this.submit}>
+          <div styleName="icon" />
+          <h1 className="h3 mb-3 font-weight-normal">React同构脚手架</h1>
+          <input type="text" ref="nickname" className="form-control mb-3" placeholder="请输入昵称" />
+          <button className="btn btn-lg btn-primary btn-block" type="submit">
             登录
-          </h1>  
-          
-          <form>
-
-            <div className="form-group">
-
-              
-              <label>
-                用户名
-              </label>
-
-              
-              <input type="email" className="form-control" placeholder="请输入用户名"/>
-
-            </div>
-
-            
-            <div className="form-group">
-
-              
-              <label>
-                密码
-              </label>
-
-              <div className="input-group input-group-merge">
-
-                
-                <input type="password" className="form-control form-control-appended" placeholder="请输入密码"/>
-
-                
-                <div className="input-group-append">
-                  <span className="input-group-text">
-                    <i className="fe fe-eye"></i>
-                  </span>
-                </div>
-
-              </div>
-            </div>
-            <button className="btn btn-lg btn-block btn-primary mb-3">
-              登录
-            </button>
-          </form>
-
-        </div>
-        <div className="col-12 col-md-7 col-lg-6 col-xl-8 d-none d-lg-block">
-          
-          
-          <div className="bg-cover vh-100 mt-n1 mr-n3"></div>
-
-        </div>
+          </button>
+        </form>
       </div>
-    </div>
     )
   }
 }

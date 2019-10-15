@@ -11,6 +11,8 @@ OfflinePluginRuntime.install();
 import configureStore from 'Root/store'
 import createRouter from 'Root/router'
 
+// 引入 antd
+import 'antd/dist/antd.css';
 // 引入 bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'jquery'

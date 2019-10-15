@@ -7,6 +7,7 @@ import Loadable from 'react-loadable'
 // import asyncRouteComponent from '../components/generateAsyncComponent.js';
 
 import Head from 'Root/components/head'
+import Menu from 'Root/components/menu'
 import Loading from 'Root/components/ui/loading'
 
 import HomeLoadData from 'Root/pages/home/load-data'
@@ -23,7 +24,7 @@ export default user => {
   // 登录用户才能访问
   const requireAuth = (Layout, props) => {
     if (!user) {
-      return <Redirect to="/sign-in" />
+      return <Redirect to="/login" />
     } else {
       return <Layout {...props} />
     }
@@ -62,7 +63,7 @@ export default user => {
     {
       path: '/home_test',
       exact: true,
-      head: null,
+      head: Menu,
       // component: asyncRouteComponent({
       //   loader: () => import('../pages/home')
       // }),

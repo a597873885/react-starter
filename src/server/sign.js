@@ -6,7 +6,7 @@ export default () => {
   const router = express.Router()
 
   router.post('/in', (req, res) => {
-    const nickname = req.body.nickname
+    const nickname = req.body.userName
 
     res.cookie(auth_cookie_name, nickname, { path: '/', httpOnly: true, maxAge: 1000 * 60 * 60 * 24 * 30 })
     res.send({ success: true })

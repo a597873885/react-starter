@@ -149,9 +149,9 @@ module.exports = {
 
     new OfflinePlugin({
       autoUpdate: 1000 * 60 * 5,
-      // ServiceWorker: {
-      //   publicPath: '/sw.js'
-      // }
+      ServiceWorker: {
+        publicPath: '/sw.js'
+      }
     }),
 
     // 创建视图模版文件，给server使用

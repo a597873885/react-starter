@@ -1,109 +1,90 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Route, Link, withRouter } from 'react-router-dom'
-
+import { Row, Col } from 'antd'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { signIn } from 'Root/store/actions/user'
+import { signIn } from 'Root/store/actions/login'
 
 import './style.scss'
 
 import Shell from 'Root/components/shell'
 import Meta from 'Root/components/meta'
 
-export class SignIn extends React.Component {
+export class Login extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
-    this.submit = this.submit.bind(this)
-  }
-
-  async submit(event) {
-    event.preventDefault()
-
-    const { nickname } = this.refs
-    const { signIn } = this.props
-
-    if (!nickname.value) {
-      nickname.focus()
-      return false
+    this.state = {
+      userName: "",
+      password: ""
     }
-
-    let [err, success] = await signIn({ nickname: nickname.value })
-
-    if (success) {
-      window.location.href = '/'
-    }
-
-    return false
   }
 
   render() {
+    const { userName, password } = this.state
     return (
-      <div  className="container-fluid">
-        <div className="row align-items-center justify-content-center">
-          <div className="col-12 col-md-5 col-lg-6 col-xl-4 px-lg-6 my-5">
-                
-            
-            <h1 className="display-4 text-center mb-3">
-              登录
-            </h1>  
-            
-            <form>
-
-              <div className="form-group">
-
-                
-                <label>
-                  用户名
-                </label>
-
-                
-                <input type="email" className="form-control" placeholder="请输入用户名"/>
-
-              </div>
-
-              
-              <div className="form-group">
-
-                
-                <label>
-                  密码
-                </label>
-
-                <div className="input-group input-group-merge">
-
-                  
-                  <input type="password" className="form-control form-control-appended" placeholder="请输入密码"/>
-
-                  
-                  <div className="input-group-append">
-                    <span className="input-group-text">
-                      <i className="fe fe-eye"></i>
-                    </span>
-                  </div>
-
+      <div styleName="login-container">
+        <Row gutter={16}>
+            <Col className="gutter-row" span={8}>
+              <div styleName="form-box">
+                <h1 className="display-4 text-center mb-3">
+                  Sign in
+                </h1>
+                <p className="text-muted text-center mb-5">
+                  Free access to our dashboard.
+                </p>
+                <div className="form-group">
+                  <label>Login Name</label>
+                  <input 
+                    type="text" 
+                    className="form-control" 
+                    placeholder="login name"
+                    value={userName}
+                    onChange={(e) => {
+                      this.setState({userName: e.target.value})
+                    }}
+                    />
                 </div>
+                <div className="form-group">
+                  <label>Password</label>
+                  <input 
+                    type="password" 
+                    className="form-control" 
+                    placeholder="password"
+                    value={password}
+                    onChange={(e) => {
+                      this.setState({password: e.target.value})
+                    }}
+                    />
+                </div>
+
+                <button className="btn btn-lg btn-block btn-primary mb-3" onClick={this.login.bind(this)}>
+                  Sign in
+                </button>
               </div>
-              <button className="btn btn-lg btn-block btn-primary mb-3">
-                登录
-              </button>
-            </form>
-
-          </div>
-          <div className="col-12 col-md-7 col-lg-6 col-xl-8 d-none d-lg-block">
-            
-            
-            <div className="bg-cover vh-100 mt-n1 mr-n3"></div>
-
-          </div>
-        </div>
+            </Col>
+            <Col className="gutter-row" span={16}>
+              <div styleName="bg-cover">
+                
+              </div>
+            </Col>
+        </Row>
       </div>
     )
   }
+  async login() {
+    const { userName, password } = this.state
+    const { signIn } = this.props
+    // console.log(userName, password)
+    let [err, success] = await signIn({ userName, password })
+
+    if (success) {
+      window.location.href = '/home_test'
+    }
+  }
 }
 
-SignIn.propTypes = {
+Login.propTypes = {
   signIn: PropTypes.func.isRequired
 }
 
@@ -117,11 +98,11 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-SignIn = withRouter(
+Login = withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(SignIn)
+  )(Login)
 )
 
-export default Shell(SignIn)
+export default Shell(Login)

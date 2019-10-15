@@ -8,7 +8,6 @@ import parseUrl from 'Root/common/parse-url'
 // 这样可以通过壳组件，给每个页面，传递参数
 
 const Shell = Component => {
-  console.log("1")
   if (!Component.loadData) {
     Component.loadData = ({ store, match }) => {
       return new Promise(async function(resolve, reject) {

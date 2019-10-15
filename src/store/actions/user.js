@@ -13,7 +13,7 @@ export function saveUserInfo({ userinfo }) {
   }
 }
 
-export function signIn({ nickname }) {
+export function signIn({ userName, password }) {
   return dispatch => {
     return new Promise(async (resolve, reject) => {
       // 这里写你的登录请求，登录成功以后，将token储存到cookie，使用httpOnly(比较安全)
@@ -24,7 +24,7 @@ export function signIn({ nickname }) {
         url: window.location.origin + '/sign/in',
         method: 'post',
         data: {
-          nickname: nickname
+          nickname: userName
         }
       })
 
